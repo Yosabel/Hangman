@@ -1,14 +1,10 @@
-// word - string
-// words - array
-// guesses - number
-// guessedLetters - array
 
 
 var word="";
 var words= ["COMPUTER","DECEMBER", "WINTER", "SUMMER", "GEMINI", "SPRING", "ENGLISH", "MATH", "FRENCH"];
 var guesses=15;
 var guessedLetters=[];
-var letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M"];
+var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R", "S", "T", "U","V","W","X","Y","Z"];
 
 function startGame(){
     guesses=15;
@@ -17,6 +13,7 @@ function startGame(){
     console.log(rand);
     word=rand;
     printWord();
+    guessLetter();
 }
 function printWord(){
     var ret="";
@@ -34,9 +31,10 @@ console.log(ret);
 }
 
 function guessLetter(){
-guessedLetters.push(word);
+guessedLetters.push(letter);
 guesses--;
-printword();
+printWord();
+console.log(guessLetter);
 
 }
 function letters(userGuess){
@@ -45,9 +43,11 @@ function letters(userGuess){
 }
 
 function populateLetters() {
+    // for(var i=1;i<=26;i++){
+    // buttonclass=""value="i"onclick=">letters[i]</button>;
+    // }
     //loop through letters
     //for each item in letters
 
-    //<button class="" value="i" onclick=">letters[i]</button>
 
 }
