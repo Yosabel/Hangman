@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<ml lang="en">
 <head>
 
     <meta charset="UTF-8">
@@ -7,11 +7,13 @@
     <script src="Script.js"></script>
 </head>
 PLAY HANGMAN!
-<div id="category"></div>
-choose category:
-<select id="categories" onchange="startGame(this.value)>
-option
-
+<div id="Difficulty"></div>
+Choose Difficulty:
+<select id="Difficult" onchange="startGame(this.value)">
+    <option value="0">Select Difficulty</option>
+    <option value="1">Difficult</option>
+    <option value="2">Slightly Difficult</option>
+    <option value="3">Easy</option>
 </select>
 <body onload="populateLetters()">
 <button class="submit"onclick="startGame()">start game</button>

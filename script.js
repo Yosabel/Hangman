@@ -1,7 +1,9 @@
 
 
 var word="";
-var words= ["COMPUTER","DECEMBER", "WINTER", "SUMMER", "GEMINI", "SPRING", "ENGLISH", "MATH", "FRENCH"];
+var difficult= ["COMPUTER","DECEMBER","DOCUMENT"];
+var slightlyDifficult=["WINTER","GEMINI","SUMMER","ENGLISH"];
+    var easy= ["MATH","HELLO","FRENCH" ];
 var guesses=15;
 var guessedLetters=[];
 var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R", "S", "T", "U","V","W","X","Y","Z"];
@@ -9,12 +11,16 @@ var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 function startGame(){
     guesses=15;
     guessedLetters=[];
-    var rand = words[Math.floor(Math.random() * words.length)];
-    console.log(rand);
+    var rand = difficult[Math.floor(Math.random() * difficult.length)];
+    var rand1=slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
+    var rand2=easy[Math.floor(Math.random() * easy.length)];
     word=rand;
+    word=rand1;
+    word=rand2;
     printWord();
     guessLetter();
 }
+
 function printWord(){
     var ret="";
     console.log(word);
@@ -30,22 +36,22 @@ function printWord(){
 console.log(ret);
 }
 
-function guessLetter(){
-guessedLetters.push(letter);
-guesses--;
-printWord();
-console.log(guessLetter);
-
-}
+// function guessLetter(){
+// guessedLetters.push(letter);
+// guesses--;
+//
+// }
 function letters(userGuess){
     console.log(userGuess);
+    guessedLetters.push(letter);
+
 
 }
 
 function populateLetters() {
-    // for(var i=1;i<=26;i++){
-    // buttonclass=""value="i"onclick=">letters[i]</button>;
-    // }
+    for(var i=1;i<=26;i++){
+  // .buttonclass=""value="i"onclick=">letters[i]</button>;
+    }
     //loop through letters
     //for each item in letters
 
