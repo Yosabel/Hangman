@@ -18,7 +18,6 @@ function startGame(){
     word=rand1;
     word=rand2;
     printWord();
-    guessLetter();
 }
 
 function printWord(){
@@ -27,33 +26,32 @@ function printWord(){
     for(var i= 0; i<word.length;i++){
     if(guessedLetters.indexOf(word[i])>-1){
         ret+= word[i];
-        console.log(ret);
     }else{
-        ret+="_";
+        ret+="_ ";
+    }
+document.getElementById("output").innerHTML=ret;
+    if(guesses>=15){
+        document.getElementById("guess").innerHTML="remaining guesses:" + guesses
     }
 
 }
 console.log(ret);
 }
 
-// function guessLetter(){
-// guessedLetters.push(letter);
-// guesses--;
+
+function letters(userGuess){
+    guessedLetters.push(userGuess);
+    guesses--;
+    printWord();
+
+}
+
+// function populateLetters() {
+//     for(var i=1;i<=26;i++){
+//   // .buttonclass=""value="i"onclick=">letters[i]</button>;
+//     }
+//     //loop through letters
+//     //for each item in letters
+//
 //
 // }
-function letters(userGuess){
-    console.log(userGuess);
-    guessedLetters.push(letter);
-
-
-}
-
-function populateLetters() {
-    for(var i=1;i<=26;i++){
-  // .buttonclass=""value="i"onclick=">letters[i]</button>;
-    }
-    //loop through letters
-    //for each item in letters
-
-
-}
