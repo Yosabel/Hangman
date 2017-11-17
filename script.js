@@ -11,9 +11,24 @@ var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 function startGame(){
     guesses=15;
     guessedLetters=[];
+//get value out of select box and set into a var
+//    var diff = document.getElementById("difficulty").innerHTML=word;
+//
+//         if(difficulty=1) {
+//         word = difficult[Math.floor(Math.random() * difficult.length)];
+//     }
+//     if(dif=2){
+//         word = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
+//     }
+//     if(dif=3){
+//         word = easy[Math.floor(Math.random() * easy.length)];
+//     }
+
     var rand = difficult[Math.floor(Math.random() * difficult.length)];
     var rand1=slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
     var rand2=easy[Math.floor(Math.random() * easy.length)];
+
+
     word=rand;
     word=rand1;
     word=rand2;
@@ -30,9 +45,7 @@ function printWord(){
         ret+="_ ";
     }
 document.getElementById("output").innerHTML=ret;
-    if(guesses>=15){
-        document.getElementById("guess").innerHTML="remaining guesses:" + guesses
-    }
+    document.getElementById("guess").innerHTML="remaining guesses:" + guesses
 
 }
 console.log(ret);
@@ -41,7 +54,13 @@ console.log(ret);
 
 function letters(userGuess){
     guessedLetters.push(userGuess);
-    guesses--;
+  if( word.indexOf(userGuess)<=-1){
+      guesses--;
+  }
+
+    if(guesses<0){
+        return document.getElementById("lose").innerHTML="You lost, Try again next time!";
+    }
     printWord();
 
 }
@@ -55,3 +74,11 @@ function letters(userGuess){
 //
 //
 // }
+//get value out of select box and set into a var
+//    var diff = document.....
+//
+//         if(diff==1) {
+//         word = difficult[Math.floor(Math.random() * difficult.length)];
+//
+//     }
+//     if()
