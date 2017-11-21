@@ -13,6 +13,7 @@ var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 function startGame(){
     guesses=10;
     guessedLetters=[];
+    // levelOfDifficulty();
 //get value out of select box and set into a var
 //    var diff = document.getElementById("difficulty").innerHTML=word;
 //
@@ -35,9 +36,11 @@ function startGame(){
     word=rand1;
     word=rand2;
     printWord();
+    populateLetters();
 }
 
 function printWord(){
+    // levelOfDifficulty();
     var ret="";
     console.log(word);
     for(var i= 0; i<word.length;i++){
@@ -64,6 +67,7 @@ function letters(userGuess){
         return document.getElementById("lose").innerHTML="You lost, Try again next time!";
     }
     printWord();
+    populateLetters();
 
 }
 
@@ -85,15 +89,17 @@ function letters(userGuess){
 
 function populateLetters() {
     var r = "";
-    for (var i = 0; i < letter; i++) {
+    for (var i = 0; i < letter.length; i++) {
         if (guessedLetters.indexOf(letter[i]) > -1) {
-            r += "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "'>" + letter[i] + "</button>"
+            r +="<button class='userGuess' onclick= 'letters(this.value)' value ='" + letter[i] + "' disabled > " + letter[i] + "</button>"
+
 
         } else {
 
-            r += "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "' disabled>" + letter[i] + "</button>"
+            r += "<button class='userGuess' onclick='letters(this.value)' value ='" + letter[i] + "'>" + letter[i] + "</button>"
         }
     }
+    return document.getElementById("button").innerHTML=r;
 }
 // if letter we are on in iteration is in guessed
 //
@@ -102,18 +108,17 @@ function populateLetters() {
 //     }
 // }
 // function levelOfDifficulty(){
-//     var diff = document.getElementById("difficulty").innerHTML=word;
+//     var diff = document.getElementById("difficulty").value;
 //
-//     if(difficulty=1) {
+//     if(diff=1) {
 //         word = difficult[Math.floor(Math.random() * difficult.length)];
-//     }
-//     console.log(word);
-//     if(dif=2){
+//     }console.log(word);
+//     if(diff=2){
 //         word = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
 //     }
 //     console.log(word);
-//     if(dif=3){
+//     if(diff=3){
 //         word = easy[Math.floor(Math.random() * easy.length)];
 //     }
-//     console.log(word);
+//     return diff;
 // }

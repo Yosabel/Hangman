@@ -1,8 +1,14 @@
 body{
-    background-color: darkcyan;
+    /*background-color: darkcyan;*/
     color: aliceblue;
     text-align: center;
     font-family: Avenir;
     font-size: xx-large;
+    background-color: coral;
+}
+button {
+    font-size: medium;
+    /*width: 50px;*/
+    margin: 10px;
 
 }
