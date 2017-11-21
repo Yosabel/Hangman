@@ -60,7 +60,7 @@ function letters(userGuess){
         guesses--;
     }
 
-    if(guesses<1){
+    if(guesses<=-1){
         return document.getElementById("lose").innerHTML="You lost, Try again next time!";
     }
     printWord();
@@ -82,17 +82,19 @@ function letters(userGuess){
 
 
 
-//
-// function populateLetters() {
-//     var r="";
-//     for (var i = 0; i < letter; i++) {
-//         if (guessedLetters.indexOf(letter[i]) > -1) {
-//             r+= "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "'>" + letter[i] + "</button>"
-//
-//         } else {
-//
-//             r+= "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "' disabled>" + letter[i] + "</button>"
-//         }
+
+function populateLetters() {
+    var r = "";
+    for (var i = 0; i < letter; i++) {
+        if (guessedLetters.indexOf(letter[i]) > -1) {
+            r += "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "'>" + letter[i] + "</button>"
+
+        } else {
+
+            r += "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "' disabled>" + letter[i] + "</button>"
+        }
+    }
+}
 // if letter we are on in iteration is in guessed
 //
 //         "<button class='submit' onclick='letters(this.value)' value='" + letter[i] + "' disabled>" + letter[i] + "</button>"
