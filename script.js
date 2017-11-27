@@ -8,11 +8,23 @@ var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 // diff=[easy,slightlyDifficult,difficult];
 
 
-function startGame(){
-    levelOfDifficulty();
+function startGame(difficulty){
+
     console.log(word);
     guesses=10;
     guessedLetters=[];
+    if (difficulty == 3) {
+        var ranEasy = easy[Math.floor(Math.random() * easy.length)];
+        word=ranEasy;
+    }
+    if (difficulty  == 2) {
+        var ranSlightlyDifficult = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
+        word=ranSlightlyDifficult;
+    }
+    if (difficulty  == 1) {
+        var ranDifficult= difficult[Math.floor(Math.random() * difficult.length)];
+        word=ranDifficult;
+    }
 
     // levelOfDifficulty();
 //get value out of select box and set into a var
@@ -57,7 +69,7 @@ function letters(userGuess){
         return document.getElementById("lose").innerHTML="You lost, Try again next time!";
 
     }
-
+    if()
 
     // if(guesses>=0 && word.indexOf("_"){
     //     return document.getElementById("win").innerHTML="You Win! You wanna play again?";
@@ -66,7 +78,9 @@ function letters(userGuess){
     populateLetters();
 
 }
-
+// function picture{
+//     if(word.indexOf(userGuess)<=-1){}
+// }
 
 //get value out of select box and set into a var
 //    var diff = document.....
@@ -97,21 +111,19 @@ function populateLetters() {
     }
     return document.getElementById("button").innerHTML=r;
 }
+// function levelOfDifficulty(difficulty){
+//     if (difficulty == 3) {
+//         var ranEasy = easy[Math.floor(Math.random() * easy.length)];
+//         word=ranEasy;
+//     }
+//     if (difficulty  == 2) {
+//         var ranSlightlyDifficult = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
+//         word=ranSlightlyDifficult;
+//     }
+//     if (difficulty  == 1) {
+//         var ranDifficult= difficult[Math.floor(Math.random() * difficult.length)];
+//         word=ranDifficult;
+//     }
+//
+// }
 
-function levelOfDifficulty() {
-    var diff = document.getElementById("difficulty").value;
-
-    if (diff = 3) {
-        word = easy[Math.floor(Math.random() * easy.length)];
-    }
-    else if (diff = 2) {
-        word = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
-        console.log(word);
-    }
-    else if (diff = 1) {
-        word = difficult[Math.floor(Math.random() * difficult.length)];
-
-    }
-    console.log(word);
-
-}
