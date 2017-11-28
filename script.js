@@ -58,9 +58,8 @@ function letters(userGuess){
 
     if(guesses<=0){
         return document.getElementById("lose").innerHTML="You lost, Try again next time!";
-
     }
-    // if()
+
     var ret=printWord();
     console.log(ret);
     if(ret.indexOf("_")==-1){
