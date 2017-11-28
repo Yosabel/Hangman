@@ -15,16 +15,16 @@ function startGame(difficulty){
     document.getElementById("lose").innerHTML="";
     document.getElementById("win").innerHTML="";
     if (difficulty == 3) {
-        var ranEasy = easy[Math.floor(Math.random() * easy.length)];
-        word=ranEasy;
+        var randEasy = easy[Math.floor(Math.random() * easy.length)];
+        word=randEasy;
     }
     if (difficulty  == 2) {
-        var ranSlightlyDifficult = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
-        word=ranSlightlyDifficult;
+        var randSlightlyDifficult = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
+        word=randSlightlyDifficult;
     }
     if (difficulty  == 1) {
-        var ranDifficult= difficult[Math.floor(Math.random() * difficult.length)];
-        word=ranDifficult;
+        var randDifficult= difficult[Math.floor(Math.random() * difficult.length)];
+        word=randDifficult;
     }
     printWord();
     populateLetters();
@@ -49,21 +49,22 @@ function printWord(){
 
 
 function letters(userGuess){
-    var disable = "";
     guessedLetters.push(userGuess);
     if( word.indexOf(userGuess)<=-1){
         guesses--;
         determineSign();
     }
 
-    if(guesses<=0){
-        return document.getElementById("lose").innerHTML="You lost, Try again next time!";
+    if(guesses<=-1){
+        console.log(guesses);
+        return document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
     }
 
     var ret=printWord();
     console.log(ret);
     if(ret.indexOf("_")==-1){
-        return document.getElementById("win").innerHTML="You Win! You wanna play again?";
+        return document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
+
     }
     populateLetters();
 
