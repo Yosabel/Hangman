@@ -2,17 +2,18 @@ var word="";
 var difficult= ["COMPUTER","DECEMBER","DOCUMENT","LANGUAGE"];
 var slightlyDifficult=["WINTER","GEMINI","SUMMER","ENGLISH"];
 var easy= ["MATH","HELLO","FRENCH", "TV"];
-var guesses=10;
+var guesses=9;
 var guessedLetters=[];
 var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R", "S", "T", "U","V","W","X","Y","Z"];
-// diff=[easy,slightlyDifficult,difficult];
 
 
 function startGame(difficulty){
 
     console.log(word);
-    guesses=10;
+    guesses=9;
     guessedLetters=[];
+    document.getElementById("lose").innerHTML="";
+    document.getElementById("win").innerHTML="";
     if (difficulty == 3) {
         var ranEasy = easy[Math.floor(Math.random() * easy.length)];
         word=ranEasy;
@@ -25,21 +26,9 @@ function startGame(difficulty){
         var ranDifficult= difficult[Math.floor(Math.random() * difficult.length)];
         word=ranDifficult;
     }
-
-    // levelOfDifficulty();
-//get value out of select box and set into a var
-
-
-    // var rand = difficult[Math.floor(Math.random() * difficult.length)];
-    // var rand1=slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
-    // var rand2=easy[Math.floor(Math.random() * easy.length)];
-    //
-    //
-    // word=rand;
-    // word=rand1;
-    // word=rand2;
     printWord();
     populateLetters();
+
 }
 
 function printWord(){
@@ -55,7 +44,7 @@ function printWord(){
         document.getElementById("guess").innerHTML="Remaining Guesses:" + guesses
 
     }
-    console.log(ret);
+   return ret;
 }
 
 
@@ -64,37 +53,26 @@ function letters(userGuess){
     guessedLetters.push(userGuess);
     if( word.indexOf(userGuess)<=-1){
         guesses--;
+        determineSign();
     }
+
     if(guesses<=0){
         return document.getElementById("lose").innerHTML="You lost, Try again next time!";
 
     }
-    if()
-
-    // if(guesses>=0 && word.indexOf("_"){
-    //     return document.getElementById("win").innerHTML="You Win! You wanna play again?";
-    // }
-    printWord();
+    // if()
+    var ret=printWord();
+    console.log(ret);
+    if(ret.indexOf("_")==-1){
+        return document.getElementById("win").innerHTML="You Win! You wanna play again?";
+    }
     populateLetters();
 
 }
-// function picture{
-//     if(word.indexOf(userGuess)<=-1){}
-// }
+function determineSign(){
 
-//get value out of select box and set into a var
-//    var diff = document.....
-//
-//         if(diff==1) {
-//         word = difficult[Math.floor(Math.random() * difficult.length)];
-//
-//     }
-//     if()
-// function disableLetter(letter){
-//
-// }
-
-
+        document.getElementById("image").innerHTML="<img src='img/step" + guesses +".png'>";
+}
 
 
 function populateLetters() {
@@ -111,19 +89,4 @@ function populateLetters() {
     }
     return document.getElementById("button").innerHTML=r;
 }
-// function levelOfDifficulty(difficulty){
-//     if (difficulty == 3) {
-//         var ranEasy = easy[Math.floor(Math.random() * easy.length)];
-//         word=ranEasy;
-//     }
-//     if (difficulty  == 2) {
-//         var ranSlightlyDifficult = slightlyDifficult[Math.floor(Math.random() * slightlyDifficult.length)];
-//         word=ranSlightlyDifficult;
-//     }
-//     if (difficulty  == 1) {
-//         var ranDifficult= difficult[Math.floor(Math.random() * difficult.length)];
-//         word=ranDifficult;
-//     }
-//
-// }
 
