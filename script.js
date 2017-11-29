@@ -2,7 +2,7 @@ var word="";
 var difficult= ["COMPUTER","DECEMBER","DOCUMENT","LANGUAGE"];
 var slightlyDifficult=["WINTER","GEMINI","SUMMER","ENGLISH"];
 var easy= ["MATH","HELLO","FRENCH", "TV"];
-var guesses=9;
+var guesses=7;
 var guessedLetters=[];
 var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R", "S", "T", "U","V","W","X","Y","Z"];
 
@@ -10,10 +10,11 @@ var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 function startGame(difficulty){
 
     console.log(word);
-    guesses=9;
+    guesses=7;
     guessedLetters=[];
     document.getElementById("lose").innerHTML="";
     document.getElementById("win").innerHTML="";
+    document.getElementById("image").innerHTML="";
     if (difficulty == 3) {
         var randEasy = easy[Math.floor(Math.random() * easy.length)];
         word=randEasy;
@@ -50,15 +51,13 @@ function printWord(){
 
 function letters(userGuess){
     guessedLetters.push(userGuess);
+    console.log("before=" + guesses);
     if( word.indexOf(userGuess)<=-1){
         guesses--;
+        console.log("after="+ guesses )
         determineSign();
     }
 
-    if(guesses<=-1){
-        console.log(guesses);
-        return document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
-    }
 
     var ret=printWord();
     console.log(ret);
@@ -66,12 +65,17 @@ function letters(userGuess){
         return document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
 
     }
+    if(guesses<=0){
+        console.log(guesses);
+        document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
+    }
     populateLetters();
 
 }
 function determineSign(){
-
-        document.getElementById("image").innerHTML="<img src='img/step" + guesses +".png'>";
+    console.log(guesses);
+        document.getElementById("image").innerHTML="<img src='img/s" + guesses +".png'>";
+        console.log(guesses);
 }
 
 
