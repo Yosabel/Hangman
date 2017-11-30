@@ -8,7 +8,6 @@ var letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 
 
 function startGame(difficulty){
-
     console.log(word);
     guesses=7;
     guessedLetters=[];
@@ -50,6 +49,7 @@ function printWord(){
 
 
 function letters(userGuess){
+    dis="";
     if(guesses>0){
         guessedLetters.push(userGuess);
         if( word.indexOf(userGuess)<=-1){
@@ -68,8 +68,9 @@ function letters(userGuess){
     var ret=printWord();
     console.log(ret);
     if(ret.indexOf("_")==-1){
-        return document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
-
+        document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
+        dis += "<button class='userGuess' onclick= 'letters(this.value)' value ='" + letter[i] + "' disabled > " + letter[i] + "</button>"
+        return document.getElementById("button").innerHTML=dis;
     }
     populateLetters();
 
