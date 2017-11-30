@@ -50,13 +50,19 @@ function printWord(){
 
 
 function letters(userGuess){
-    guessedLetters.push(userGuess);
-    console.log("before=" + guesses);
-    if( word.indexOf(userGuess)<=-1){
-        guesses--;
-        console.log("after="+ guesses )
-        determineSign();
+    if(guesses>0){
+        guessedLetters.push(userGuess);
+        if( word.indexOf(userGuess)<=-1){
+            guesses--;
+            console.log("after="+ guesses )
+            determineSign();
+        }
+    }else{
+        document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
     }
+
+    console.log("before=" + guesses);
+
 
 
     var ret=printWord();
@@ -64,10 +70,6 @@ function letters(userGuess){
     if(ret.indexOf("_")==-1){
         return document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
 
-    }
-    if(guesses<=0){
-        console.log(guesses);
-        document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
     }
     populateLetters();
 
