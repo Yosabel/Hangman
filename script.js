@@ -49,31 +49,28 @@ function printWord(){
 
 
 function letters(userGuess){
-    dis="";
+    var ret="";
     if(guesses>0){
         guessedLetters.push(userGuess);
         if( word.indexOf(userGuess)<=-1){
             guesses--;
-            console.log("after="+ guesses )
             determineSign();
         }
-    }else{
-        document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
+        if(ret.indexOf("_")>-1){
+            document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
+        }else{
+            if(guesses<=0){
+                document.getElementById("lose").innerHTML="I'm sorry you lost the game, Try again next time!";
+            }
+        }
+        printWord();
+        var ret=printWord();
+        console.log(ret);
+        if(ret.indexOf("_")==-1){
+            return document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
+        }
+        populateLetters();
     }
-
-    console.log("before=" + guesses);
-
-
-
-    var ret=printWord();
-    console.log(ret);
-    if(ret.indexOf("_")==-1){
-        document.getElementById("win").innerHTML="Congratulation you Win! You wanna play again?";
-        dis += "<button class='userGuess' onclick= 'letters(this.value)' value ='" + letter[i] + "' disabled > " + letter[i] + "</button>"
-        return document.getElementById("button").innerHTML=dis;
-    }
-    populateLetters();
-
 }
 function determineSign(){
     console.log(guesses);
